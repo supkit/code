@@ -1,7 +1,7 @@
 package main
 
 import (
-	"code/lib"
+	"code/go-lang/lib"
 	"fmt"
 )
 
