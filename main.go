@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"code/lib"
+	"fmt"
+)
 
 func main() {
-	fmt.Println("test")
+	name := lib.User("sean")
+	fmt.Println(name)
 }
