@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="https://gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png" type="image/x-icon"/>
+    <title>西安格外信息科技有限公司</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <div id="main">
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <img src="/images/logo.svg">
+                    <span>格外互动</span>
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li><a href="" class="selected">首页</a></li>
+                        <li><a href="">解决方案</a></li>
+                        <li><a href="">经典案例</a></li>
+                        <li><a href="">关于我们</a> </li>
+                        <li><a href="">帮助中心</a></li>
+                    </ul>
+                </div>
+                <div class="login"><a href="" id="login">登录</a></div>
+            </div>
+        </header>
+        <section>
+            <div class="content">
+                <h1>超级订单</h1>
+                <h2>让商家拥有自己独立的订单小程序</h2>
+                <p>超级订单为餐饮、超市、实体门店提供解决订单管理、会员管理。我们基于微信开放平台开发的订单小程序无任何开发成本，一键授权即可使用；可以充分降低开发运营成本，专注于自身的业务发展，提高收益</p>
+                <div>
+                    <a class="auth" href="/register">立即开通</a> <a class="review" href="https://apollo.supbin.com/auth">现在体验</a>
+                </div>
+            </div>
+            <div class="describe"><img src="/images/bg.png"></div>
+        </section>
+    </div>
+    <div class="product">
+        <div class="container">
+            <div class="list">
+                                <div class="item">
+                    <div class="content">
+                        <h1>基于微信小程序</h1>
+                        <p>无需下载安装，打开即用，借助微信生态拓展客群</p>
+                    </div>
+                    <div class="icon">
+                        <img src="/images/item-4.svg">
+                    </div>
+                </div>
+                                <div class="item">
+                    <div class="content">
+                        <h1>数据驱动智慧经营</h1>
+                        <p>丰富的数据统计分析，帮助经营者洞悉一切消费行为</p>
+                    </div>
+                    <div class="icon">
+                        <img src="/images/item-1.svg">
+                    </div>
+                </div>
+                                <div class="item">
+                    <div class="content">
+                        <h1>独立管理后台</h1>
+                        <p>独立管理后台，经营者自己的数据中心</p>
+                    </div>
+                    <div class="icon">
+                        <img src="/images/item-2.svg">
+                    </div>
+                </div>
+                                <div class="item">
+                    <div class="content">
+                        <h1>多店铺支持</h1>
+                        <p>无论单店、多店，一个系统全部管理</p>
+                    </div>
+                    <div class="icon">
+                        <img src="/images/item-3.svg">
+                    </div>
+                </div>
+                                <div class="item">
+                    <div class="content">
+                        <h1>加强互动，提升转化</h1>
+                        <p>积分、红包、抽奖，多种互动玩法</p>
+                    </div>
+                    <div class="icon">
+                        <img src="/images/item-6.svg">
+                    </div>
+                </div>
+                                <div class="item">
+                    <div class="content">
+                        <h1>客户服务体系</h1>
+                        <p>完善的客服系统帮助经营者快速了解消费者需求</p>
+                    </div>
+                    <div class="icon">
+                        <img src="/images/item-5.svg">
+                    </div>
+                </div>
+                            </div>
+        </div>
+    </div>
+    <div class="position">
+        <div class="container">
+            <h1>我们的优势</h1>
+            <div class="list">
+                <div class="item">
+                    <div class="icon"><img src="/images/p-1.png"></div>
+                    <div class="title">专业的产品设计</div>
+                </div>
+                <div class="item center">
+                    <div class="icon"><img src="/images/p-2.png"></div>
+                    <div class="title">完整的体系生态</div>
+                </div>
+                <div class="item">
+                    <div class="icon"><img src="/images/p-3.png"></div>
+                    <div class="title">高质量的服务</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <div class="contact">
+                <p>西安格外信息科技有限公司 <a href="http://www.beian.miit.gov.cn/">陕ICP备19018175号</a></p>
+                <p>09:00 - 18:00</p>
+            </div>
+            <div class="wechat"><img id="qr-code" src="/images/qr-code.svg"></div>
+        </div>
+    </div>
+    <div id="wechat-qr-code">
+        <div class="container"><img src="/images/code.png"></div>
+    </div>
+    <script>
+        var qrCode = document.getElementById('qr-code');
+        var wechatQrCode = document.getElementById('wechat-qr-code');
+        var qrCodeDisplay = false;
+        var login = document.getElementById('login');
+
+        qrCode.addEventListener('click', function () {
+            if (qrCodeDisplay) {
+                qrCodeDisplay = false;
+                wechatQrCode.style.display = 'none';
+            } else {
+                qrCodeDisplay = true;
+                wechatQrCode.style.display = 'block';
+            }
+        });
+
+        wechatQrCode.addEventListener('click', function () {
+            alert('即将上线，敬请期待');
+            return false;
+            if (qrCodeDisplay) {
+                qrCodeDisplay = false;
+                wechatQrCode.style.display = 'none';
+            } else {
+                qrCodeDisplay = true;
+                wechatQrCode.style.display = 'block';
+            }
+        });
+
+        login.addEventListener('click', function () {
+            alert('即将上线，敬请期待');
+            return false;
+        });
+    </script>
+</body>
+</html>

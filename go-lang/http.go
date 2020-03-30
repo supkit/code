@@ -1,6 +1,8 @@
 package main
 
 import (
+	"code/go-lang/controllers"
+	"code/go-lang/demo"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -10,12 +12,12 @@ import (
 )
 
 func main() {
-	urls := []string {
+	urls := []string{
 		"http://www.qq.com",
 		"http://www.baidu.com",
 		"http://www.supbin.com",
 		"http://www.sohu.com",
-		"http://www.yahoo.com",
+		// "http://www.yahoo.com",
 		"http://www.tencent.com",
 		"http://www.hao123.com",
 		"http://www.weibo.com",
@@ -29,13 +31,16 @@ func main() {
 	}
 
 	for range urls {
-		text := <- message
+		text := <-message
 		fmt.Println(text)
 	}
 
 	// 总消耗的时间
 	elapsed := time.Since(start).Seconds()
 	fmt.Printf("%.2fs all over\n", elapsed)
+
+	demo.Study()
+	fmt.Println(controllers.Index())
 }
 
 func get(url string, message chan string) {
@@ -57,7 +62,7 @@ func get(url string, message chan string) {
 	writeError := ioutil.WriteFile(getFileName(url), body, 0644)
 
 	if writeError != nil {
-		os.Exit(1)
+		os.Exit(2)
 	}
 
 	// 消耗的时间

@@ -1,8 +1,8 @@
-package main
+package demo
 
 import "fmt"
 
-func main() {
+func Study() {
 	a := 10
 	// 定义一个指针
 	var ip *int
