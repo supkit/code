@@ -1,39 +1,33 @@
 package main
 
 import (
-	"code/go-lang/controllers/home"
-	"code/go-lang/controllers/user"
 	"fmt"
-	"net/http"
-	"regexp"
+	"sync"
 )
 
+// https://www.mogublog.net/post/2120.html
+var wg sync.WaitGroup
+
+func write(ch chan int) {
+	for i := 0; i < 10; i++ {
+		ch <- i
+		fmt.Println("write data: ", i)
+	}
+}
+
+func read(ch chan int) {
+	for {
+		fmt.Println("read data: ", <-ch)
+		wg.Done()
+	}
+}
+
 func main() {
-	// https://www.jianshu.com/p/7d507ccb5eec
-	// 正则表达式
-	reg, err := regexp.Compile("^([a-z]+)([0-9]+)$")
+	ch := make(chan int, 5)
+	wg.Add(10)
 
-	if err != nil {
-		fmt.Println(err)
-	}
+	go write(ch)
+	go read(ch)
 
-	content := "abc9009"
-
-	fmt.Println(reg.MatchString(content))
-	fmt.Println(reg.FindString(content))
-	fmt.Println(reg.FindStringSubmatchIndex(content))
-	result := reg.FindStringSubmatch(content)
-
-	for index, value := range result {
-		fmt.Printf("[%d]:%v\n", index, value)
-	}
-
-	for i := 0; i < len(result); i++ {
-		fmt.Printf("[%d]:%v\n", i, result[i])
-	}
-
-	http.HandleFunc("/", home.Index)
-	http.HandleFunc("/user/index", user.Index)
-
-	http.ListenAndServe("127.0.0.1:8001", nil)
+	wg.Wait()
 }
