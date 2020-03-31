@@ -1,7 +1,10 @@
 package main
 
 import (
+	"code/go-lang/controllers/home"
+	"code/go-lang/controllers/user"
 	"fmt"
+	"net/http"
 	"regexp"
 )
 
@@ -29,10 +32,8 @@ func main() {
 		fmt.Printf("[%d]:%v\n", i, result[i])
 	}
 
-	// http.HandleFunc("/[a-z]*$", home.Index)
-	// http.HandleFunc("/home/index", home.Index)
-	// http.HandleFunc("/home/hello", home.Hello)
-	// http.HandleFunc("/user/index", user.Index)
+	http.HandleFunc("/", home.Index)
+	http.HandleFunc("/user/index", user.Index)
 
-	// http.ListenAndServe("127.0.0.1:8001", nil)
+	http.ListenAndServe("127.0.0.1:8001", nil)
 }
