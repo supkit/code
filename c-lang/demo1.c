@@ -38,5 +38,6 @@ int main() {
             break;
     }
 
-    return 0;
+    // 等待输入，防止程序退出
+    scanf("%d", &a);
 }
