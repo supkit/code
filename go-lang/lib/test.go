@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"regexp"
+	"sync"
 	"time"
 )
 
@@ -83,4 +84,37 @@ func HttpServer() {
 	http.HandleFunc("/user/index", user.Index)
 
 	http.ListenAndServe("127.0.0.1:8001", nil)
+}
+
+var wg sync.WaitGroup
+
+func WaitGroup() {
+	ch := make(chan int, 5)
+	wg.Add(10)
+
+	go write(ch)
+	go read(ch)
+
+	wg.Wait()
+}
+
+
+
+func write(ch chan int) {
+	for i := 0; i < 10; i++ {
+		ch <- i
+		fmt.Println("write data: ", i)
+	}
+}
+
+func read(ch chan int) {
+	for {
+		fmt.Println("read data: ", <-ch)
+		wg.Done()
+	}
+}
+
+func Chan() {
+	ch := make(chan int)
+	ch <- 0
 }

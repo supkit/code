@@ -1,33 +1,20 @@
 package main
 
-import (
-	"fmt"
-	"sync"
-)
+import "fmt"
 
-// https://www.mogublog.net/post/2120.html
-var wg sync.WaitGroup
-
-func write(ch chan int) {
-	for i := 0; i < 10; i++ {
-		ch <- i
-		fmt.Println("write data: ", i)
-	}
-}
-
-func read(ch chan int) {
-	for {
-		fmt.Println("read data: ", <-ch)
-		wg.Done()
-	}
-}
+// 管道学习文章 http://c.biancheng.net/view/97.html
 
 func main() {
-	ch := make(chan int, 5)
-	wg.Add(10)
+	ch := make(chan int)
 
-	go write(ch)
-	go read(ch)
-
-	wg.Wait()
+	go func() {
+		fmt.Println(1212)
+		ch <- 0
+	}()
+	go func() {
+		fmt.Println(13123)
+		ch <- 0
+	}()
+	<-ch
+	fmt.Println(1)
 }
